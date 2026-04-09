@@ -399,7 +399,8 @@ async function s() {
         result_item.onclick = function(e) {
             info = results[e.target.id];
 
-            venues = [{"backs": 14.90}, {"am:pm": 13.90}, {"supersal": 12.90}]
+            venues = JSON.parse(info["venues"])
+            
 
 
             info_popup = document.getElementById("product_info_popup");
@@ -424,7 +425,7 @@ async function s() {
                 venue_name = document.createElement("p")
                 venue_name.setAttribute("class", "popup_venue_name");
 
-                venue_name.innerHTML = Object.keys(venues[i])[0];
+                venue_name.innerHTML = venues[i]["venue_name"];
 
 
                 price = document.createElement("p")
@@ -433,7 +434,7 @@ async function s() {
                 distance = 5;
 
 
-                price.innerHTML = venues[i][Object.keys(venues[i])[0]]
+                price.innerHTML = venues[i]['price']
 
                 divider = document.createElement("div");
                 divider.setAttribute("class", "venue_divider");
