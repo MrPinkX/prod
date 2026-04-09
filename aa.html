@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body id="body">
+
+
+    <input type="text" id="sea" oninput="s()">
+
+
+    <div id="result_container"> 
+        
+    </div>
+
+
+    <div id="product_info_popup">
+
+        <!-- <div id="info_content"> -->
+            <p id="popup_product_name">שדג</p>
+
+        <p id="popup_producer_name">ששש</p>
+        <p id="popup_barcode">ששש</p>
+        <p id="popup_product_description">טחינה מעולה שתגרום לכם ללקק את ה</p>
+
+
+
+        <div id="divider"></div>
+
+        <h2 id="popup_venues_title">בתי עסק</h2>
+        <div id="add_venue_button" onclick="add_venue()">+</div>
+        <p id="popup_venues_container"></p>
+
+        <div id="add_venue_popup"> 
+
+            <input type="text" id="venue_name" class="add_venue_input" placeholder="שם בית עסק">
+            <input type="text" id="venue_location" class="add_venue_input" placeholder="כתובת">
+            <input type="number" id="price" class="add_venue_input" placeholder="מחיר מבוקש">
+
+            <div id="submit_button" onclick="add_venue_()">
+                שלח
+            </div>
+
+
+
+        </div>
+        <!-- </div> -->
+        
+        
+
+    </div>
+
+    
+</body>
+</html>
+
+
+
+<style> 
+ 
+  
+ 
+ 
+ 
+
+      
+
+     
+ 
+
+     
+
+    
+    
+    body {
+        background-color: rgb(22, 22, 22);
+    }
+
+   #sea {
+        position: relative;
+        background-color: rgb(46, 46, 46);
+        outline: none;
+        border: none;
+        top: 425px;
+        width: 255px;
+        height: 41px;
+        border-radius: 7px;
+        left: 54px;
+        color: #9f9f9f;
+        direction: rtl;
+        /* padding: 3px; */
+        padding-right: 16px;
+    }
+
+
+    #result_container {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        top: 448px;
+        direction: rtl;
+        /* margin: 3p; */
+        /* margin-top: 5px; */
+        left: -4%;
+    }
+
+    .result {
+        position: relative;
+        color: white;
+        margin-top: 3px;
+        width: 339px;
+        height: 203px;
+        background-color: #2e2e2e;
+        border-radius: 22px;
+        margin-left: 8px;
+        margin-top: 19px;
+    }
+
+    .result_name {
+        font-family: a;
+        position: relative;
+        left: -19px;
+    }
+
+    .result_producer {
+        font-family: a;
+        position: relative;
+        left: -19px;
+        color: grey;
+        font-size: 13px;
+        top: -4px;
+    }
+
+
+   #product_info_popup {
+        position: fixed;
+        background-color: black;
+        width: 391px;
+        height: 568px;
+        top: 285px;
+        left: -1px;
+        visibility: hidden;
+        overflow-y: auto;
+        overflow-x: clip;
+    }
+
+    #info_content {
+        height: fit-content;
+        overflow: auto;
+    }
+
+
+    #popup_product_name {
+        font-family: arial;
+        position: relative;
+        left: 17%;
+        color: #7f7f7f;
+        width: fit-content;
+        font-size: 30px;
+        font-family: a;
+        direction: rtl;
+        top: 242px;
+    }
+
+
+    #popup_producer_name {
+        font-family: arial;
+        position: relative;
+        left: 333px;
+        color: grey;
+        font-size: 16px;
+        top: 205px;
+        width: fit-content;
+        /* font-size: 30px; */
+        font-family: a;
+    }
+
+    #popup_barcode {
+        font-family: arial;
+        position: relative;
+        left: 303px;
+        color: grey;
+        font-size: 9px;
+        top: 125px;
+        width: fit-content;
+        /* font-size: 30px; */
+        font-family: a;
+        /*! font-size: 3px; */
+    } 
+
+     #popup_product_description {
+        font-family: arial;
+        position: relative;
+        left: 154px;
+        color: grey;
+        font-size: 13px;
+        top: 189px;
+        width: fit-content;
+        /* font-size: 30px; */
+        font-family: a;
+    } 
+
+
+    #popup_venues_title {
+        position: relative;
+        color: #777;
+        top: 198px;
+        left: 273px;
+        width: fit-content;
+    } 
+
+    #add_venue_button {
+        font-family: roboto;
+        color: #878787;
+        position: relative;
+        width: fit-content;
+        font-size: 30px;
+        top: 143px;
+        left: 39px;
+    }
+
+    #add_venue_popup {
+        visibility: hidden;
+        background-color: #141414;
+        width: 272px;
+        height: 75px;
+        z-index: 3;
+        position: absolute;
+        top: 410px;
+        height: 210px;
+        left: 30px;
+        border-radius: 24px;
+    } 
+
+
+    .add_venue_input {
+        background-color: #181818;
+        color: grey;
+        outline: none;
+        border: none;
+        border-radius: 3px;
+        top: 30px;
+        position: relative;
+        top: 46px;
+        left: 50px;
+        height: 30px;
+        margin-top: 5px;
+        direction: rtl;
+    }
+
+
+    #popup_venues_container {
+        position: relative;
+        color: #b3b3b3;
+        top: 143px;
+        height: fit-content;
+        left: 8px;
+        width: 30px;
+    } 
+
+
+   .popup_venue {
+        color: white;
+        background-color: rgb(29, 29, 29);
+        width: 377px;
+        height: 168px;
+        border-radius: 12px;
+        /*! width: 30; */
+    }
+
+    .popup_venue_name {
+        color: white;
+        position: relative;
+        left: 30px;
+        top: 19px;
+        font-family: roboto;
+        width: fit-content;
+    }
+
+    #divider {
+        width: 329px;
+        height: 0.5px;
+        background-color: #282828;
+        position: relative;
+        top: 143px;
+        /*! width: 30px; */
+        left: 30px;
+    } 
+
+
+    .price {
+        position: relative;
+        width: fit-content;
+        left: 31px;
+        top: 15px;
+        font-family: roboto;
+    }
+
+    .venue_divider {
+        width: 329px;
+        height: 0.5px;
+        background-color: #282828;
+        position: relative;
+        top: 58px;
+        /* width: 30px; */
+        left: 18px;
+    }
+
+    #submit_button {
+        position: relative;
+        color: white;
+        font-family: a;
+        top: 61px;
+        left: 115px;
+        width: fit-content;
+    }
+
+
+
+
+
+
+</style>
+
+
+<script>
+
+
+const se = document.getElementById("sea");
+const body = document.getElementById("body");
+const add_venue_popup = document.getElementById("add_venue_popup")
+
+
+body.onclick = function(e) {
+    console.log(e.target.id)
+
+    info_popup = document.getElementById("product_info_popup")
+
+    if (e.target.id == "body") {
+        info_popup.style.visibility = "hidden";
+        add_venue_popup.style.visibility = "hidden";
+    }
+}
+
+
+
+
+async function s() {
+    
+    response = await fetch('/search', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ val: se.value })
+                    });
+
+    results = await response.json();
+
+    console.log(results);
+
+    
+    result_cont = document.getElementById("result_container");
+    result_cont.innerHTML = "";
+
+
+    for (i=0; i<3; i++) {
+        console.log(results[i])
+        result_item = document.createElement("a");
+        result_item.setAttribute("class", "result");
+
+        result_item.id = i;
+
+        result_item_name = document.createElement("p");
+        result_item_name.setAttribute("class", "result_name");
+
+        result_item.appendChild(result_item_name);
+
+        result_item_producer =  document.createElement("p");
+        result_item_producer.setAttribute("class", "result_producer");
+
+        result_item.appendChild(result_item_producer);
+
+
+        result_item_name.innerHTML = results[i]["product_name"];
+        result_item_producer.innerHTML = results[i]["יצרן"];
+
+
+        result_item.onclick = function(e) {
+            info = results[e.target.id];
+
+            venues = [{"backs": 14.90}, {"am:pm": 13.90}, {"supersal": 12.90}]
+
+
+            info_popup = document.getElementById("product_info_popup");
+            info_popup.style.visibility = "visible";
+
+
+            popup_product = document.getElementById("popup_product_name");
+            popup_producer = document.getElementById("popup_producer_name");
+            popup_barcode  = document.getElementById("popup_barcode");
+
+            popup_product.innerHTML = info["product_name"]
+            popup_producer.innerHTML = info["מותג"]
+            popup_barcode.innerHTML = info["barcode"]
+
+            popup_venue_container = document.getElementById("popup_venues_container"); 
+            popup_venue_container.innerHTML = "";
+
+            for (i=0; i<venues.length; i++) {
+                venue = document.createElement("div");
+                venue.setAttribute("class", "popup_venue");
+
+                venue_name = document.createElement("p")
+                venue_name.setAttribute("class", "popup_venue_name");
+
+                venue_name.innerHTML = Object.keys(venues[i])[0];
+
+
+                price = document.createElement("p")
+                price.setAttribute("class", "price");
+
+                distance = 5;
+
+
+                price.innerHTML = venues[i][Object.keys(venues[i])[0]]
+
+                divider = document.createElement("div");
+                divider.setAttribute("class", "venue_divider");
+
+                
+
+
+                venue.appendChild(venue_name);
+                venue.appendChild(price);
+                venue.appendChild(divider);
+
+                popup_venue_container.appendChild(venue);
+            }
+
+
+        }
+
+
+        result_cont.appendChild(result_item);
+    }
+
+}
+
+
+async function add_venue() {
+    popup = document.getElementById("add_venue_popup");
+
+    popup.style.visibility = "visible";
+}
+
+
+async function add_venue_() {
+    input_name = document.getElementById("venue_name");
+    input_location = document.getElementById("venue_location");
+    input_price = document.getElementById("price");
+
+    popup.style.visibility = "visible";
+
+    venue_dat = {"venue_name": input_name.value, "venue_location": input_location.value, "price": input_price.value}
+
+
+    response = await fetch('/add_venue', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify([venue_dat, popup_barcode.innerHTML])
+                    });
+
+    results = await response.json();
+
+    console.log(results);
+}
+
+
+
+</script>
