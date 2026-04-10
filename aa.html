@@ -34,6 +34,8 @@
         <p id="popup_barcode">ששש</p>
         <p id="popup_product_description">טחינה מעולה שתגרום לכם ללקק את ה</p>
 
+        <p id="popup_product_pricerange"></p>
+
 
 
         <div id="divider"></div>
@@ -68,6 +70,8 @@
 
 
 <style> 
+ 
+     
  
     
   
@@ -163,7 +167,7 @@
         font-size: 30px;
         font-family: "Open Sans";
         direction: rtl;
-        top: 81px;
+        top: 130px;
         width: 397px;
     }
 
@@ -183,9 +187,9 @@
         font-family: Open Sans;
         position: relative;
         left: 290px;
-        color: grey;
+        color: #717171;
         font-size: 9px;
-        top: 91px;
+        top: 135px;
         width: fit-content;
         /* font-size: 30px; */
         font-family: Open Sans;
@@ -198,7 +202,7 @@
         left: 154px;
         color: grey;
         font-size: 13px;
-        top: 175px;
+        top: 209px;
         width: fit-content;
         /* font-size: 30px; */
     } 
@@ -207,7 +211,7 @@
     #popup_venues_title {
         position: absolute;
         color: #777;
-        top: 243px;
+        top: 286px;
         left: 273px;
         width: fit-content;
         font-family: Open Sans;
@@ -219,7 +223,7 @@
         position: absolute;
         width: fit-content;
         font-size: 30px;
-        top: 274px;
+        top: 307px;
         left: 39px;
     }
 
@@ -259,7 +263,7 @@
     #popup_venues_container {
         position: relative;
         color: #b3b3b3;
-        top: 273px;
+        top: 313px;
         height: fit-content;
         left: 8px;
         width: 30px;
@@ -289,7 +293,7 @@
         height: 0.5px;
         background-color: #282828;
         position: relative;
-        top: 150px;
+        top: 178px;
         /*! width: 30px; */
         left: 30px;
     } 
@@ -320,7 +324,32 @@
         top: 61px;
         left: 136px;
         width: fit-content;
+    } 
+
+
+    .add_to_list {
+        position: relative;
+        font-family: Open Sans;
+        color: white;
+        width: fit-content;
+        left: -299px;
+        top: -45px;
+        font-size: 27px;
+    } 
+
+
+    #popup_product_pricerange {
+        color: #7e7e7e;
+        position: absolute;
+        top: 246px;
+        left: 284px;
+        font-family: Open Sans;
+        background-color: #212121;
+        border-radius: 38px;
+        padding: 10px;
+        font-size: 10px;
     }
+
 
 
 
@@ -413,18 +442,54 @@ async function s() {
         result_item_producer =  document.createElement("p");
         result_item_producer.setAttribute("class", "result_producer");
 
+
+        add_to_list = document.createElement("div");
+        add_to_list.setAttribute("class", "add_to_list"); 
+        add_to_list.id = i;
+        add_to_list.innerHTML = "+";
+
         result_item.appendChild(result_item_producer);
+        result_item.appendChild(add_to_list);
+
+
+        add_to_list.onclick = async function(e) {
+            added_product = results[e.target.id]["product"];
+
+            response = await fetch('/add_to_user_list', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({"added_product_": added_product})
+                    });
+
+        results = await response.json();
+
+
+        }
+
+
 
 
         result_item_name.innerHTML = results[i]["product_name_"];
         result_item_producer.innerHTML = results[i]["יצרן"];
+        
+
 
 
         result_item.onclick = function(e) {
+            console.log(e.target)
+            if (e.target.className != "add_to_list") {
+                
+            console.log("OPEN")
+            
             info = results[e.target.id];
 
             venues = JSON.parse(info["venues"])["venues"];
             console.log(venues);
+
+
+            price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
             
 
 
@@ -442,6 +507,10 @@ async function s() {
 
             popup_venue_container = document.getElementById("popup_venues_container"); 
             popup_venue_container.innerHTML = "";
+
+
+            price_range = document.getElementById("popup_product_pricerange");
+            price_range.innerHTML = price_range_;
 
             for (i=0; i<venues.length; i++) {
                 console.log("VENUEE")
@@ -474,6 +543,8 @@ async function s() {
 
                 popup_venue_container.appendChild(venue);
             }
+            }
+            
 
 
         }
