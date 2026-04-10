@@ -39,7 +39,10 @@ app.post(`/search`, jsonParser, async (req, res) => {
   }) 
 
 
-  results = await db2.all(`SELECT * FROM products WHERE product_name LIKE "%${val}%"`)
+  results = await db2.all(`SELECT *
+FROM products_ as t
+LEFT OUTER JOIN products as d
+on t.product = d.barcode WHERE product_name_ LIKE "%${val}%"`)
 
   console.log(results);
 
@@ -69,11 +72,19 @@ app.post(`/add_venue`, jsonParser, async (req, res) => {
 
   results = await db2.all(`SELECT * FROM products WHERE barcode LIKE "%${val}%"`);
 
+
+  
   venues = JSON.parse(results[0]["venues"]);
-  venues.push(val_)
+
+  console.log(venues, val_)
+  if (venues) {
+      venues.push(val_)
+  } else {
+    venues = [val_]
+  }
   
   db2.exec(`UPDATE products 
-    SET venues = '${JSON.stringify([venues])}'
+    SET venues = '${JSON.stringify(venues)}'
     WHERE barcode = ${val}`);
 
   res.send(val);
