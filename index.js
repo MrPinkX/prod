@@ -58,14 +58,14 @@ app.post(`/add_venue`, jsonParser, async (req, res) => {
 
 
 
-   const db2 = await open({
-    filename: 'd.db',
-    driver: sqlite3.Database
+  const db2 = await open({
+  filename: 'd.db',
+  driver: sqlite3.Database
   }) 
 
-    console.log(`UPDATE products 
-    SET venues = '${JSON.stringify([val_])}'
-    WHERE barcode LIKE "${val}"`);
+  console.log(`UPDATE products 
+  SET venues = '${JSON.stringify([val_])}'
+  WHERE barcode LIKE "${val}"`);
 
 
   
@@ -90,6 +90,13 @@ app.post(`/add_venue`, jsonParser, async (req, res) => {
   res.send(val);
 
     
+})
+
+
+app.post("/add_to_user_list", jsonParser, async (req, res) => {
+  added_product = req.body["added_product_"];
+  console.log(added_product);
+
 })
 
 app.listen(port, () => {
