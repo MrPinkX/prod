@@ -350,6 +350,29 @@
         font-size: 10px;
     }
 
+    .result_pricerange {
+        color: #7e7e7e;
+        position: absolute;
+        top: 44px;
+        left: 248px;
+        font-family: Open Sans;
+        background-color: #393939;
+        border-radius: 7px;
+        padding: 7px;
+        font-size: 10px;
+        width: fit-content;
+    }
+
+    
+    .venue_am {
+        color: #893838;
+        font-family: Open Sans;
+        font-size: 9px;
+        position: absolute;
+        top: 44px;
+        left: 201px;
+    }
+
 
 
 
@@ -428,7 +451,11 @@ async function s() {
 
 
     for (i=0; i<3; i++) {
-        console.log(results[i])
+        venues = JSON.parse(results[i]["venues"])["venues"];
+
+        price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
+        venue_am = `${venues.length} בתי עסק`;
+
         result_item = document.createElement("a");
         result_item.setAttribute("class", "result");
 
@@ -443,6 +470,18 @@ async function s() {
         result_item_producer.setAttribute("class", "result_producer");
 
 
+        result_item_pricerange = document.createElement("div");
+        result_item_pricerange.setAttribute("class", "result_pricerange");
+
+        result_item_pricerange.innerHTML = price_range_;
+        
+        venue_am_ = document.createElement("p");
+        venue_am_.setAttribute("class", "venue_am");
+        venue_am_.innerHTML = venue_am;
+
+
+
+
         add_to_list = document.createElement("div");
         add_to_list.setAttribute("class", "add_to_list"); 
         add_to_list.id = i;
@@ -450,6 +489,8 @@ async function s() {
 
         result_item.appendChild(result_item_producer);
         result_item.appendChild(add_to_list);
+        result_item.appendChild(result_item_pricerange);
+        result_item.appendChild(venue_am_);
 
 
         add_to_list.onclick = async function(e) {
