@@ -45,7 +45,7 @@
         <div id="add_venue_popup"> 
 
             <input type="text" id="venue_name" class="add_venue_input" placeholder="שם בית עסק">
-            <input type="text" id="venue_location" class="add_venue_input" placeholder="כתובת">
+            <input type="text" id="venue_location" class="add_venue_input" placeholder="כתובת" onclick="getlocation()">
             <input type="number" id="price" class="add_venue_input" placeholder="מחיר מבוקש" inputmode="numeric">
 
             <div id="submit_button" onclick="add_venue_()">
@@ -69,12 +69,8 @@
 
 <style> 
  
-      
+    
   
- 
-      
- 
-     
  
     
     
@@ -160,21 +156,22 @@
 
     #popup_product_name {
         font-family: Open Sans;
-        position: relative;
-        left: 8%;
+        position: absolute;
+        left: -31px;
         color: #7f7f7f;
         width: fit-content;
         font-size: 30px;
         font-family: "Open Sans";
         direction: rtl;
-        top: 170px;
+        top: 81px;
+        width: 397px;
     }
 
 
     #popup_producer_name {
         font-family: Open Sans;
-        position: relative;
-        left: 318px;
+        position: absolute;
+        left: 301px;
         color: grey;
         font-size: 16px;
         top: 136px;
@@ -185,10 +182,10 @@
     #popup_barcode {
         font-family: Open Sans;
         position: relative;
-        left: 303px;
+        left: 290px;
         color: grey;
         font-size: 9px;
-        top: 50px;
+        top: 91px;
         width: fit-content;
         /* font-size: 30px; */
         font-family: Open Sans;
@@ -197,20 +194,20 @@
 
      #popup_product_description {
         font-family: Open Sans;
-        position: relative;
+        position: absolute;
         left: 154px;
         color: grey;
         font-size: 13px;
-        top: 109px;
+        top: 175px;
         width: fit-content;
         /* font-size: 30px; */
     } 
 
 
     #popup_venues_title {
-        position: relative;
+        position: absolute;
         color: #777;
-        top: 121px;
+        top: 243px;
         left: 273px;
         width: fit-content;
         font-family: Open Sans;
@@ -219,10 +216,10 @@
     #add_venue_button {
         font-family: roboto;
         color: #878787;
-        position: relative;
+        position: absolute;
         width: fit-content;
         font-size: 30px;
-        top: 71px;
+        top: 274px;
         left: 39px;
     }
 
@@ -262,7 +259,7 @@
     #popup_venues_container {
         position: relative;
         color: #b3b3b3;
-        top: 64px;
+        top: 273px;
         height: fit-content;
         left: 8px;
         width: 30px;
@@ -292,7 +289,7 @@
         height: 0.5px;
         background-color: #282828;
         position: relative;
-        top: 68px;
+        top: 150px;
         /*! width: 30px; */
         left: 30px;
     } 
@@ -309,7 +306,7 @@
     .venue_divider {
         width: 329px;
         height: 0.5px;
-        background-color: #282828;
+        background-color: #656565;
         position: relative;
         top: 58px;
         /* width: 30px; */
@@ -329,7 +326,6 @@
 
 
 
-
 </style>
 
 
@@ -338,7 +334,8 @@
 
 const se = document.getElementById("sea");
 const body = document.getElementById("body");
-const add_venue_popup = document.getElementById("add_venue_popup")
+const add_venue_popup = document.getElementById("add_venue_popup");
+
 
 
 body.onclick = function(e) {
@@ -352,6 +349,33 @@ body.onclick = function(e) {
     }
 }
 
+
+async function getlocation() {
+
+    location_input = document.getElementById("venue_location");
+    let location;
+    navigator.geolocation.getCurrentPosition(async function(position) {
+        var lat = await position.coords.latitude;
+        var lon = await position.coords.longitude;
+        location = [lat, lon];
+        console.log(location, "mkj");
+
+        const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({location: {lat: location[0], lng: location[1]}}, (results, status) => {
+    if (status === "OK") {
+        location_input.value = results[0].formatted_address;
+    } else {
+        console.error("Geocoder failed due")}
+
+    });
+    })
+
+
+
+
+    
+    // location_input.innerHTML = location;
+}
 
 
 
@@ -392,14 +416,15 @@ async function s() {
         result_item.appendChild(result_item_producer);
 
 
-        result_item_name.innerHTML = results[i]["product_name"];
+        result_item_name.innerHTML = results[i]["product_name_"];
         result_item_producer.innerHTML = results[i]["יצרן"];
 
 
         result_item.onclick = function(e) {
             info = results[e.target.id];
 
-            venues = JSON.parse(info["venues"])
+            venues = JSON.parse(info["venues"])["venues"];
+            console.log(venues);
             
 
 
@@ -411,14 +436,15 @@ async function s() {
             popup_producer = document.getElementById("popup_producer_name");
             popup_barcode  = document.getElementById("popup_barcode");
 
-            popup_product.innerHTML = info["product_name"]
+            popup_product.innerHTML = info["product_name_"]
             popup_producer.innerHTML = info["מותג"]
-            popup_barcode.innerHTML = info["barcode"]
+            popup_barcode.innerHTML = info["product"]
 
             popup_venue_container = document.getElementById("popup_venues_container"); 
             popup_venue_container.innerHTML = "";
 
             for (i=0; i<venues.length; i++) {
+                console.log("VENUEE")
                 venue = document.createElement("div");
                 venue.setAttribute("class", "popup_venue");
 
@@ -492,3 +518,5 @@ async function add_venue_() {
 
 
 </script>
+
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmSfA09s8uz3ZIseJJiUj9YuwhwusrDjE&callback=initMap"></script>
