@@ -10,9 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
 </head>
 <body id="body">
 
@@ -21,8 +20,38 @@
 
 
     <div id="result_container"> 
+
         
     </div>
+
+
+
+    <p id="sign_up" onclick='document.getElementById("signup_popup").style.visibility="visible"'>Sign Up</p>
+    <div id="signup_popup">
+
+            <p id="exit_signup" onclick='document.getElementById("signup_popup").style.visibility="hidden"'>+</p>
+
+            <input type="text" id="username" class="login_form">
+            <input type="text"id="password" class="login_form">
+            <p id="message"></p>
+
+            <div id="signup_button" onclick="signup()">הרשם</div>
+ 
+            <div id="login_switch" onclick='document.getElementById("signup_button").innerHTML="התחבר"'>כבר רשום? התחבר</div>
+        
+    </div>
+
+
+    <div id="userlist_circle">
+        <h3 id="shopping_title">רשימת הקניות שלי</h3>
+        <div id="shopping_content"></div>
+        <p id="userlist_exit">+</p>
+    </div>
+
+
+
+
+
 
 
     <div id="product_info_popup">
@@ -71,11 +100,207 @@
 
 <style> 
  
-     
- 
-    
+  
   
  
+  
+ 
+    
+ 
+   
+    
+   
+  
+ 
+   #sign_up {
+        color: white;
+        background-color: #121212;
+        padding: 11px;
+        width: fit-content;
+        font-family: arial;
+        font-size: 20px;
+        border-radius: 3px;
+        position: absolute;
+        top: -4px;
+        left: 8px;
+    }
+
+    #exit_signup {
+        color: white;
+        position: absolute;
+        top: -89px;
+        left: 28px;
+        font-size: 82px;
+        transform: rotate(45deg);
+    }
+
+   #userlist_circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color: #0e0e0e;
+        visibility: hidden;
+        position: fixed;
+        top: 217px;
+        left: 308px;
+        top: 764px;
+        transition: border-radius 1s, width 0.5s, height 0.5s, top 0.5s, left 0.5s;
+        color: white;
+        font-family: Open Sans;
+        /* direction: rtl; */
+        overflow: auto;
+    }
+
+    #userlist_exit {
+        position: relative;
+        visibility: hidden;
+        color: white;
+        left: 28px;
+        text-anchor: 3px;
+        /*! rotate: ; */
+        transform: rotate(45deg);
+        top: -98px;
+        font-size: 44px;
+        width: fit-content;
+    }
+
+    #shopping_title {
+        visibility: hidden;
+        left: 116px;
+        position: relative;
+        top: 35px;
+        font-size: 30px;
+    }
+
+    .shopping_item {
+        position: relative;
+        color: white;
+        margin-top: 3px;
+        width: 339px;
+        height: 203px;
+        background-color: #191919;
+        border-radius: 6px;
+        margin-left: 8px;
+        margin-top: 19px;
+        left: 26px;
+        top: -93px;
+    }
+
+    .shopping_item_name {
+	position: relative;
+	top: 15px;
+	left: -12px;
+	/* display: ; */
+	direction: rtl;
+}
+
+
+    .shopping_item_pricerange {
+        color: #7e7e7e;
+        position: absolute;
+        top: 44px;
+        left: 248px;
+        font-family: Open Sans;
+        background-color: #393939;
+        border-radius: 7px;
+        padding: 7px;
+        font-size: 10px;
+        width: fit-content;
+    }
+
+   
+
+    .result_producer {
+        font-family: Open Sans;
+        position: relative;
+        left: -19px;
+        color: grey;
+        font-size: 13px;
+        top: -4px;
+    }
+
+
+    
+    
+    #signup_popup {
+        width: 102%;
+        height: 865px;
+        background-color: #000;
+        visibility: hidden;
+        position: absolute;
+        top: 26px;
+        left: -9px;
+    }
+
+    .login_form {
+        position: relative;
+        top: 391px;
+        left: 69px;
+        border-radius: 6px;
+        height: 30px;
+        color: white;
+
+        /*! padding: ; */
+        padding-left: 10px;
+    }
+
+    #username {
+        position: relative;
+        width: 247px;
+        height: 36px;
+        outline: none;
+        border: none;
+        background-color: #181818;
+        /* top: ; */
+    }
+
+   #password {
+        position: relative;
+        width: 247px;
+        height: 36px;
+        outline: none;
+        border: none;
+        background-color: #181818;
+        /* top: ; */
+        top: 403px;
+        /*! border-radius: 3px; */
+        /*! padding-left: 9px; */
+    } 
+
+
+    #message {
+	color: white;
+	position: relative;
+	font-family: arial;
+	top: 395px;
+	left: 69px;
+	width: fit-content;
+}
+
+
+    #signup_button {
+        position: absolute;
+        color: dimgray;
+        font-family: Open Sans;
+        top: 519px;
+        left: 152px;
+        /* width: ; */
+        width: fit-content;
+        font-size: 27px;
+        background-color: #242424;
+        padding: 9px;
+        border-radius: 10px;
+    } 
+
+    #login_switch {
+        color: white;
+        font-family: Open Sans;
+        position: absolute;
+        top: 591px;
+        left: 136px;
+        width: fit-content;
+    }
+
     
     
     body {
@@ -101,6 +326,7 @@
     }
 
 
+
     #result_container {
         position: relative;
         display: flex;
@@ -119,7 +345,7 @@
         width: 339px;
         height: 203px;
         background-color: #2e2e2e;
-        border-radius: 22px;
+        border-radius: 7px;
         margin-left: 8px;
         margin-top: 19px;
     }
@@ -276,8 +502,11 @@
         width: 377px;
         height: 168px;
         border-radius: 12px;
-        /*! width: 30; */
+        /* width: 30; */
+        position: relative;
+        top: 3px;
     }
+
 
     .popup_venue_name {
         color: white;
@@ -304,7 +533,8 @@
         width: fit-content;
         left: 31px;
         top: 15px;
-        font-family: roboto;
+        font-family: arial;
+        color: #59132a;
     }
 
     .venue_divider {
@@ -328,14 +558,14 @@
 
 
     .add_to_list {
-        position: relative;
         font-family: Open Sans;
         color: white;
         width: fit-content;
-        left: -299px;
-        top: -45px;
+        left: 28px;
+        top: 9px;
         font-size: 27px;
-    } 
+        position: absolute;
+    }
 
 
     #popup_product_pricerange {
@@ -371,7 +601,53 @@
         position: absolute;
         top: 44px;
         left: 201px;
+    } 
+
+
+    #shopping_venues_container {
+        position: relative;
+        top: -90px;
+    } 
+
+
+    .shopping_venue {
+        color: white;
+        background-color: rgb(29, 29, 29);
+        width: 305px;
+        height: 168px;
+        border-radius: 12px;
+        /* width: 30; */
+        position: relative;
+        top: 9px;
+        left: 31px;
+        padding: 21px;
+        margin-top: 22px;
+    } 
+
+
+    .shopping_venue_name {
+        position: relative;
+        color: white;
+        font-family: Roboto;
+        margin: 0px;
     }
+
+    .venue_total {
+        position: relative;
+        color: white;
+        font-family: Roboto;
+    }
+
+
+    .shopping_item_remove {
+        position: relative;
+        width: fit-content;
+        left: 30px;
+        font-family: 3px;
+        font-size: 26px;
+        top: -40px;
+    }
+
 
 
 
@@ -400,6 +676,60 @@ body.onclick = function(e) {
         add_venue_popup.style.visibility = "hidden";
     }
 }
+
+
+async function signup() {
+
+
+    button = document.getElementById("signup_button");
+
+    if (button.innerHTML == "הרשם") {
+        username = document.getElementById("username").value;
+        password = document.getElementById("password").value;
+
+        response = await fetch('/signup', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ usernamex: username, password: password, enter:true })
+                        });
+
+
+
+        results = await response.json();
+        console.log(results);
+
+    } else {
+        username = document.getElementById("username").value;
+        password = document.getElementById("password").value;
+
+        response = await fetch('/login', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ usernamex: username, password: password, enter:true })
+                        });
+
+
+
+        results = await response.json();
+        console.log(results);
+    } 
+    
+    message = document.getElementById("message");
+    message.innerHTML = results[0]
+
+    if (results[0] == "success") {
+        window.location.replace("/");
+    }
+
+    
+    
+
+}
+
 
 
 async function getlocation() {
@@ -510,13 +840,9 @@ async function s() {
         }
 
 
-
-
         result_item_name.innerHTML = results[i]["product_name_"];
         result_item_producer.innerHTML = results[i]["יצרן"];
         
-
-
 
         result_item.onclick = function(e) {
             console.log(e.target)
@@ -625,7 +951,227 @@ async function add_venue_() {
     results = await response.json();
 
     console.log(results);
+} 
+
+
+
+function create_venue(venue_item) {
+    venue = document.createElement("div");
+    venue.setAttribute("class", "popup_venue");
+
+    venue_name = document.createElement("p")
+    venue_name.setAttribute("class", "popup_venue_name");
+
+    venue_name.innerHTML = venue_item["venue_name"];
+
+
+    price = document.createElement("p")
+    price.setAttribute("class", "price");
+
+    distance = 5;
+
+
+    price.innerHTML = venue_item['price']
+
+    divider = document.createElement("div");
+    divider.setAttribute("class", "venue_divider");
+
+    venue.appendChild(venue_name);
+    venue.appendChild(price);
+    venue.appendChild(divider);
+
+    return venue;
 }
+
+
+
+async function get_userlist() {
+     response = await fetch('/send_userlist', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(["toky"])
+                    });
+
+    results = await response.json();
+
+
+    
+    user_list = results[1];
+    
+    shopping_list = document.getElementById("shopping_content");
+
+    if (results[0] == "User!") {
+        console.log("users");
+
+        userlist_circle = document.getElementById("userlist_circle");
+
+        userlist_circle.style.visibility = "visible";
+
+        open_ = false;
+
+        userlist_circle.onclick = async function(e) {
+            console.log(open_)
+
+            userlist_exit = document.getElementById("userlist_exit");
+            userlist_exit.style.visibility = "visible";
+            userlist_exit.onclick = function() {
+                console.log("XX")
+                userlist_circle.style.height = "50px";
+                userlist_circle.style.width = "50px";
+                userlist_circle.style.borderRadius = "100px";
+
+                userlist_circle.style.left = "308px"
+                userlist_circle.style.top = "764px";
+                shopping_list.innerHTML = "";
+
+                open_ = false;
+
+                userlist_exit.style.visibility = "hidden";
+            }
+
+            
+
+            if (open_==false) {
+                console.log(e.target.id);
+                if (e.target.id!="userlist_exit") {
+                    
+                open_ = true;
+
+
+                // Inlarge popup
+
+                shopping_title = document.getElementById("shopping_title");
+                shopping_title.style.visibility = "visible";
+
+                console.log(user_list);
+                userlist_circle.style.height = "872px";
+                userlist_circle.style.width = "400px";
+                userlist_circle.style.borderRadius = "0px";
+
+                userlist_circle.style.left = "-10px"
+                userlist_circle.style.top = "-1px";
+
+                
+                venue_rank = {}
+
+                
+                // show items
+                for (i=0; i<user_list.length; i++) {
+                    venues = JSON.parse(user_list[i]["venues"])["venues"];
+
+                    for (x=0; x<venues.length; x++) {
+                        if (Object.keys(venue_rank).includes(venues[x]["venue_name"])) {
+                            venue_rank[venues[x]['venue_name']] += parseFloat(venues[x]["price"]);
+                        } else{
+                            venue_rank[venues[x]['venue_name']] = parseFloat(venues[x]["price"]);
+                        }
+                    }
+
+                
+                    shopping_item = document.createElement("div");
+                    shopping_item.setAttribute("class", "shopping_item");
+                    shopping_item.id = `shopping_item ${i}`
+
+                    shopping_item_name = document.createElement('p'); 
+                    shopping_item_name.setAttribute("class", "shopping_item_name");
+
+                    price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
+
+
+                    shopping_item_pricerange = document.createElement("div");
+                    shopping_item_pricerange.setAttribute("class", "shopping_item_pricerange");
+
+                    shopping_item_pricerange.innerHTML = price_range_;
+
+                    shopping_item_remove = document.createElement("p");
+                    shopping_item_remove.setAttribute("class", "shopping_item_remove");
+                    shopping_item_remove.id = i;
+
+                    shopping_item_remove.innerHTML = "-";
+                    shopping_item_remove.onclick = async function(e) {
+                        shopping_list.removeChild(document.getElementById(`shopping_item ${e.target.id}`));
+                        user_list.splice(e.target.id, 1);
+                        console.log(user_list);
+
+                        response = await fetch('/send_userlist', {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(["toky", user_list])
+                        });
+
+                    results = await response.json();
+                    }
+
+
+
+                    
+                    venue_am = `${venues.length} בתי עסק`;
+                    venue_am_ = document.createElement("p");
+                    venue_am_.setAttribute("class", "venue_am");
+                    venue_am_.innerHTML = venue_am;
+
+
+                    shopping_item_name.innerHTML = user_list[i]["product_name_"];
+                    shopping_item.appendChild(shopping_item_name);
+                    shopping_item.appendChild(shopping_item_pricerange);
+                    shopping_item.appendChild(venue_am_);
+                    shopping_item.appendChild(shopping_item_remove);
+
+                    shopping_list.appendChild(shopping_item);
+                    userlist_circle.appendChild(shopping_list);
+                }
+
+
+
+
+                venues_container = document.createElement("div");
+                venues_container.id = "shopping_venues_container";
+
+
+                // Show venues
+                for (n=0; n<Object.keys(venue_rank).length; n++) {
+                        console.log("SOMSA");
+
+                        venue_object = {"venue_name": Object.keys(venue_rank)[n], "price": venue_rank[Object.keys(venue_rank)[n]]}
+                        
+                        venue_element = document.createElement("div");
+                        venue_element.setAttribute("class", "shopping_venue");
+
+                        venue_name =  document.createElement("p");
+                        venue_name.setAttribute("class", "shopping_venue_name");
+
+                        venue_total =  document.createElement("p");
+                        venue_total.setAttribute("class", "venue_total");
+
+                        venue_name.innerHTML = venue_object["venue_name"];
+                        venue_total.innerHTML = venue_object["price"];
+
+                        venue_element.appendChild(venue_name);
+                        venue_element.appendChild(venue_total);
+
+                        venues_container.appendChild(venue_element);
+                        
+                    }
+
+                    shopping_list.appendChild(venues_container);
+
+                }
+
+                }
+        }
+
+
+
+    }
+}
+
+
+
+get_userlist();
 
 
 
