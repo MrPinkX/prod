@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"> -->
 
 </head>
 <body id="body">
 
-
+    <div id="body_">
     <input type="text" id="sea" oninput="s()">
 
 
@@ -24,7 +24,22 @@
         
     </div>
 
+    
 
+      <div id="side_button" onclick="document.getElementById('side').style.visibility = 'visible'">
+        <div class="sideline"></div>
+        <div class="sideline"></div>
+        <div class="sideline"></div>
+    </div>
+
+    <div id="side">
+        <p id="recepies" onclick="recipes()"
+        
+        >מתכונים</p>
+    </div>
+
+   
+   
 
     <p id="sign_up" onclick='document.getElementById("signup_popup").style.visibility="visible"'>Sign Up</p>
     <div id="signup_popup">
@@ -91,6 +106,10 @@
         
 
     </div>
+    </div>
+
+    
+
 
     
 </body>
@@ -99,18 +118,58 @@
 
 
 <style> 
- 
   
-  
- 
-  
- 
-    
- 
-   
-    
    
   
+  
+ 
+  
+  
+  
+ 
+   
+  
+ 
+  
+ 
+   
+   
+    #side_button {
+        position: absolute;
+        width: fit-content;
+        left: 346px;
+        top: 25px;
+    }
+
+    .sideline {
+        background-color: white;
+        width: 20px;
+        height: 3px;
+        margin-top: 3px;
+        border-radius: 0px;
+    }
+
+    #side {
+        position: fixed;
+        background-color: black;
+        width: 306px;
+        height: 858px;
+        top: -4px;
+        left: 122px;
+        visibility: hidden;
+        overflow-y: auto;
+        overflow-x: clip;
+    }
+
+    #recepies {
+        position: relative;
+        color: white;
+        font-family: Open Sans;
+        font-size: 30px;
+        top: 346px;
+        left: 105px;
+    }
+
  
    #sign_up {
         color: white;
@@ -187,12 +246,12 @@
     }
 
     .shopping_item_name {
-	position: relative;
-	top: 15px;
-	left: -12px;
-	/* display: ; */
-	direction: rtl;
-}
+        position: relative;
+        top: 15px;
+        left: -12px;
+        /* display: ; */
+        direction: rtl;
+    }
 
 
     .shopping_item_pricerange {
@@ -422,7 +481,9 @@
         /*! font-size: 3px; */
     } 
 
-     #popup_product_description {
+
+
+    #popup_product_description {
         font-family: Open Sans;
         position: absolute;
         left: 154px;
@@ -648,11 +709,295 @@
         top: -40px;
     }
 
+    #recipes_title {
+        color: white;
+        font-family: Open Sans;
+        position: relative;
+        left: 168px;
+        width: fit-content;
+        top: 4px;
+        font-size: 51px;
+    } 
+
+
+    .recipe_item {
+        position: relative;
+        color: white;
+        margin-top: 3px;
+        width: 339px;
+        height: 203px;
+        background-color: #2e2e2e;
+        border-radius: 7px;
+        margin-left: 8px;
+        margin-top: 19px;
+        left: 7px;
+        top: -126px;
+    }
+
+    .recipe_name {
+        font-family: Open Sans;
+        position: relative;
+        left: -19px;
+        direction: rtl;
+        font-weight: bold;
+        font-size: 22px;
+        margin: 0px;
+        top: 106px;
+        /*! width: 30px; */
+        left: 237px;
+        width: fit-content;
+    }
+
+    #add_recipes_ {
+        color: white;
+        width: fit-content;
+        font-size: 53px;
+        top: -110px;
+        position: relative;
+        left: 19px;
+    }
+
+
+     #add_recipe_popup {
+        position: fixed;
+        background-color: black;
+        width: 391px;
+        height: 744px;
+        top: 118px;
+        left: -1px;
+        visibility: hidden;
+        overflow-y: auto;
+        overflow-x: clip;
+    }
+
+    #text_container {
+        color: white;
+        background-color: black;
+        border: none;
+        direction: rtl;
+        /* fon-family: Open Sans; */
+        font-family: Open Sans;
+        width: 361px;
+        height: 327px;
+        left: 4px;
+        position: absolute;
+        top: 118px;
+        border: none;
+        outline: none;
+    }
+
+    #title_container {
+        color: white;
+        background-color: black;
+        border: none;
+        direction: rtl;
+        /* fon-family: Open Sans; */
+        font-family: Open Sans;
+        width: 396px;
+        height: 47px;
+        left: -25px;
+        position: absolute;
+        top: 56px;
+        border: none;
+        outline: none;
+        font-size: 36px;
+    }
+    
+    
+    #product_complete {
+        width: 201px;
+        height: 100px;
+        position: relative;
+        visibility: hidden;
+        background-color: #151515;
+        top: 149px;
+        left: 110px;
+        border-radius: 8px;
+        padding: 14px;
+    }
+
+    .product_option {
+        color: white;
+        font-family: Open Sans;
+        /* margin: ; */
+        margin-top: 0px;
+        margin-bottom: 4px;
+        direction: rtl;
+    } 
+
+    .ingrediant {
+        color: white;
+        background-color: grey;
+        padding: 7px;
+        border-radius: 3px;
+        position: relative;
+        left: -60px;
+        margin-left: 7px;
+        height: fit-content;
+        font-family: Open Sans;
+    }
+
+    #ingrediant_container {
+        position: absolute;
+        left: 7px;
+        top: -114px;
+        display: flex;
+        flex-wrap: wrap;
+        top: 521px;
+        width: 375px;
+        /* margin-left: -101px; */
+        background-color: #000;
+        border: none;
+        outline: none;
+        height: 89px;
+        direction: rtl;
+        color: white;
+    }
+
+
+    #send_recipe {
+        position: absolute;
+        color: #fff;
+        top: 2px;
+        font-family: Open Sans;
+        left: 14px;
+        font-size: 18px;
+        /*! background-color: #1f1f1f; */
+        width: fit-content;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0px;
+        text-decoration: bold;
+        /*! text-decoration-thickness: 3px; */
+        font-weight: bold;
+    }
+
+   #cancel_add_recipe {
+        position: absolute;
+        color: white;
+        font-family: Open Sans;
+        top: -2px;
+        left: 335px;
+    } 
+
+
+    .recipe_total {
+        color: white;
+        width: fit-content;
+        position: relative;
+        font-family: roboto;
+        top: 171px;
+        left: 280px;
+    }
+
+    #recipe_popup {
+        position: fixed;
+        background-color: black;
+        width: 391px;
+        height: 777px;
+        top: 77px;
+        left: -1px;
+        visibility: hidden;
+        overflow-y: auto;
+        overflow-x: clip;
+    }
+
+
+    #recipe_title {
+        font-family: Open Sans;
+        position: absolute;
+        left: -31px;
+        color: #7f7f7f;
+        width: fit-content;
+        font-size: 30px;
+        font-family: "Open Sans";
+        direction: rtl;
+        top: 9px;
+        width: 397px;
+    }
+
+     #recipe_description {
+        font-family: Open Sans;
+        position: absolute;
+        left: 154px;
+        color: grey;
+        font-size: 13px;
+        top: 71px;
+        width: fit-content;
+        /* font-size: 30px; */
+    }
+
+
+    #recipe_total_popup {
+        color: white;
+        width: fit-content;
+        position: relative;
+        font-family: roboto;
+        top: -1px;
+        left: 329px;
+    }
+
+    #popup_image {
+        position: absolute;
+        width: 436px;
+        top: -65px;
+        left: -22px;
+    }
+
+    #recipe_content {
+        position: absolute;
+        width: 100%;
+        top: 237px;
+        background-color: black;
+        height: 100%;
+    } 
+
+
+    #recipe_ingrediants_popup {
+        position: absolute;
+
+        width: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 418px;
+        top: 319px;
+        left: 93px;
+    }
+
+    .recipe_ingredient {
+        position: relative;
+        color: white;
+        margin-left: 30px;
+        font-family: Open Sans;
+        top: -1px;
+        margin: 0px;
+        margin-left: 14px;
+        background-color: grey;
+        padding: 6px;
+        border-radius: 4px;
+    }
+
+    .img_thumb_container {
+        position: relative;
+        /*! overflow-x: clip; */
+        overflow: clip;
+        width: 334px;
+        height: 142px;
+        top: -69px;
+        left: 3px;
+        border-radius: 9px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    
+
+
+    
 
 
 
-
-
+    
 
 </style>
 
@@ -661,21 +1006,344 @@
 
 
 const se = document.getElementById("sea");
-const body = document.getElementById("body");
+const body = document.getElementById("body_");
 const add_venue_popup = document.getElementById("add_venue_popup");
+const side = document.getElementById("side");
 
 
 
 body.onclick = function(e) {
     console.log(e.target.id)
 
-    info_popup = document.getElementById("product_info_popup")
+    info_popup = document.getElementById("product_info_popup");
+    recipe_popup = document.getElementById("recipe_popup"); 
+    console.log("bb", e.target.id)
 
-    if (e.target.id == "body") {
-        info_popup.style.visibility = "hidden";
-        add_venue_popup.style.visibility = "hidden";
+    if (e.target.id == "body_") {
+        if (info_popup) {
+            info_popup.style.visibility = "hidden";
+            add_venue_popup.style.visibility = "hidden";
+        }
+        side.style.visibility = "hidden";
+
+        if (recipe_popup)
+        body.removeChild(recipe_popup);
     }
 }
+
+async function recipes() {
+    document.getElementById('side').style.visibility='hidden'
+    body.innerHTML = ''
+
+    recipes_ = document.createElement("h2");
+    recipes_.id = "recipes_title";
+
+    recipes_.innerHTML = "מתכונים";
+
+    add = document.createElement("h2");
+    add.id = "add_recipes_"; 
+    
+    add.innerHTML = "+"; 
+
+    body.appendChild(recipes_);
+    body.appendChild(add);
+
+
+    function recipe_popup_(recipe_object) {
+        recipe_popup = document.createElement("div");
+        recipe_popup.id = "recipe_popup"; 
+
+        recipe_content = document.createElement("div");
+        recipe_content.id = "recipe_content"; 
+
+        recipe_popup_image = document.createElement("div");
+        recipe_popup_image.innerHTML = `<img src="http://localhost:8080/burg.png" id="popup_image">`
+
+        recipe_name = document.createElement("h2");
+        recipe_name.id = "recipe_title"; 
+
+        recipe_name.innerHTML = recipe_object["name"];
+
+        recipe_description = document.createElement("p");
+        recipe_description.id = "recipe_description"; 
+
+        recipe_description.innerHTML = recipe_object["description"];
+        
+
+        recipe_price = document.createElement("p");
+        recipe_price.id = "recipe_total_popup"; 
+
+        recipe_price.innerHTML = recipe_object["price"] + "₪";
+
+
+        recipe_ingrediants = document.createElement("div");
+        recipe_ingrediants.id = "recipe_ingrediants_popup";
+
+        console.log(JSON.parse(recipe_object["products"]))
+
+        for (let i=0; i<JSON.parse(recipe_object['products']).length; i++) {
+            console.log(recipe_object["products"][i], "asdAAASD")
+            ingredient = document.createElement("p");
+            ingredient.setAttribute("class", "recipe_ingredient");
+
+            ingredient.innerHTML = JSON.parse(recipe_object['products'])[i][1]
+
+            recipe_ingrediants.appendChild(ingredient);
+        }
+        
+        
+        recipe_popup.style.visibility = "visible";
+
+        exit_recipe_popup = document.createElement("p");
+        exit_recipe_popup.id = "exit_recipe_popup";
+        exit_recipe_popup.innerHTML = "+";
+
+
+        recipe_popup.appendChild(recipe_popup_image)
+        recipe_content.appendChild(recipe_name);
+        recipe_content.appendChild(recipe_description);
+        recipe_content.appendChild(recipe_price);
+        recipe_content.appendChild(recipe_ingrediants);
+
+        recipe_popup.appendChild(recipe_content);
+        body.appendChild(recipe_popup)
+
+
+
+    }
+
+
+
+    // Load recipes 
+    response = await fetch('/send_recipes', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ send: true })
+                        });
+
+
+
+    results = await response.json();
+
+    recipes__ = results[0];
+
+
+    recipes_container = document.createElement("div");
+    recipes_container.id = "recipes_cotainer";
+    body.appendChild(recipes_container);
+
+
+    for (let i=0; i<recipes__.length; i++) {
+        if (recipes__[i]["products"].length>0) {
+            recipe_ = document.createElement("div");
+            recipe_.setAttribute("class", "recipe_item"); 
+
+            recipe_image = document.createElement("div");
+            recipe_image.innerHTML = `<img src="http://localhost:8080/burg.png" id="popup_image">`;
+            recipe_image.setAttribute("class", "img_thumb_container")
+
+            recipe_name = document.createElement("p");
+            recipe_name.setAttribute("class", "recipe_name"); 
+
+            recipe_total = document.createElement("p");
+            recipe_total.setAttribute("class", "recipe_total"); 
+
+            recipe_.appendChild(recipe_total);
+            recipe_.appendChild(recipe_name);
+
+            recipe_.onclick = function(e) {
+
+                
+                recipe_popup_(recipes__[e.target.id])
+
+            }
+
+            recipe_.appendChild(recipe_image);
+
+            recipe_name.innerHTML = recipes__[i]["name"];
+            recipe_total.innerHTML = recipes__[i]["price"] + "₪";
+            recipe_.id = i;
+
+
+
+
+            recipes_container.appendChild(recipe_);
+        }
+        
+    }
+
+
+    
+
+
+
+
+    // Open recipe form popup 
+    add.onclick = function() {
+        console.log("open_popup")
+
+        
+        add_recipe_popup = document.createElement("div");
+        add_recipe_popup.id = "add_recipe_popup";
+        add_recipe_popup.style.visibility = "visible";
+
+
+        text_container = document.createElement("textarea");
+        text_container.id = "text_container";
+
+        title_container = document.createElement("textarea");
+        title_container.id = "title_container";
+
+        text_container.placeholder = "טקסט חופשי ..."
+        title_container.placeholder = "טקסט חופשי ..."
+
+
+        ingrediant_container = document.createElement("div");
+        ingrediant_container.id = "ingrediant_container";
+
+        product_complete = document.createElement("div");
+        product_complete.id = "product_complete";
+
+        add_recipe_popup.appendChild(text_container);
+        add_recipe_popup.appendChild(title_container);
+        add_recipe_popup.appendChild(ingrediant_container);
+        add_recipe_popup.appendChild(product_complete);
+
+        
+        product_word = false;
+        
+        ingrediants = [];
+        recipe_description = "";
+        recipe_title = "";
+        text_container.oninput = async function() {
+            recipe_description = text_container.value;
+
+            console.log(recipe_description)
+
+            if (text_container.value.slice(-1) == "@") {
+                console.log("@")
+                product_complete.style.visibility = "visible";
+
+                product_word = true;
+
+            } 
+
+            if (text_container.value.includes("@")) {
+                product_word = true;
+            } else {
+                product_word = false; 
+                product_complete.style.visibility = "hidden";
+            }
+
+
+            // Auto-complete if user mention product within recipe/desc
+            if (product_word) {
+                product_query = text_container.value.split("@").slice(-1);
+                console.log(product_query)
+                console.log(text_container.value);
+
+
+                response = await fetch('/search', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ val:product_query[0]})
+                        });
+
+
+
+                results = await response.json();
+                products = results;
+                
+                product_complete.innerHTML = "";
+                console.log(products)
+                for (i=0; i<4; i++) {
+
+                    product_option = document.createElement("p");
+                    product_option.setAttribute("class", "product_option");
+
+                    product_option.innerHTML = products[i]["product_name_"];
+                    product_option.id = products[i]["product"];
+
+                    product_option.onclick = function(e) {
+                        ingrediant = [e.target.id, e.target.innerHTML];
+                        ingrediants.push(ingrediant);
+                        product_complete.style.visibility = "hidden";
+
+                        ingrediant_ = document.createElement("p");
+                        ingrediant_.setAttribute("class", "ingrediant");
+
+                        ingrediant_.innerHTML = ingrediant[1];
+
+                        ingrediant_container.appendChild(ingrediant_)
+
+                        text_container.value =text_container.value.split("@")[0] + ingrediant[1];
+                        // insert complete opt
+                    }
+                    product_complete.appendChild(product_option)
+                }
+            }
+        } 
+
+        title_container.oninput = function() {
+            recipe_title = title_container.value;
+        }
+
+
+        send_button = document.createElement("p");
+        send_button.id = "send_recipe";
+        send_button.innerHTML = "שתף מתכון"
+
+        cancel_add = document.createElement("p");
+        cancel_add.id = "cancel_add_recipe";
+        cancel_add.innerHTML = "ביטול"
+
+
+
+        add_recipe_popup.appendChild(send_button);
+        add_recipe_popup.appendChild(cancel_add);
+
+        
+
+
+        send_button.onclick = async function send_recipe() {
+
+            recipe = {"title": recipe_title, "description": recipe_description, "ingrediants": ingrediants}
+            console.log(recipe)
+            response = await fetch('/add_recipe', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ recipe_:recipe })
+                        });
+
+
+            results = await response.json()
+
+            console.log(results);
+
+            // add_recipe_popup.style.visibility = "hidden";
+
+        }
+
+        cancel_add.onclick = function() {
+            add_recipe_popup.style.visibility = "hidden";
+        }
+
+        body.appendChild(add_recipe_popup);
+        
+
+
+    }
+
+
+}
+
+
 
 
 async function signup() {
