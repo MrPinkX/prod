@@ -64,21 +64,18 @@
     </div>
 
 
-
-
-
-
-
     <div id="product_info_popup">
 
         <!-- <div id="info_content"> -->
-            <p id="popup_product_name">שדג</p>
+        <p id="popup_product_name"></p>
 
-        <p id="popup_producer_name">ששש</p>
-        <p id="popup_barcode">ששש</p>
+        <p id="popup_producer_name"></p>
+        <p id="popup_barcode"></p>
         <p id="popup_product_description">טחינה מעולה שתגרום לכם ללקק את ה</p>
 
         <p id="popup_product_pricerange"></p>
+
+        <p id="popup_item_type"></p>
 
 
 
@@ -108,6 +105,10 @@
     </div>
     </div>
 
+    <div id="recipes_div">
+        
+    </div>
+
     
 
 
@@ -118,22 +119,31 @@
 
 
 <style> 
-  
    
-  
-  
- 
-  
-  
-  
  
    
   
+   
  
+   
+ 
+   
+ 
+   
+  
+   
+   
+  
+  
+    
+   
+  
+  
+   
+  
+   
   
  
-   
-   
     #side_button {
         position: absolute;
         width: fit-content;
@@ -208,6 +218,7 @@
         font-family: Open Sans;
         /* direction: rtl; */
         overflow: auto;
+        overflow-x: clip;
     }
 
     #userlist_exit {
@@ -328,13 +339,13 @@
 
 
     #message {
-	color: white;
-	position: relative;
-	font-family: arial;
-	top: 395px;
-	left: 69px;
-	width: fit-content;
-}
+        color: white;
+        position: relative;
+        font-family: arial;
+        top: 395px;
+        left: 69px;
+        width: fit-content;
+    }
 
 
     #signup_button {
@@ -407,12 +418,46 @@
         border-radius: 7px;
         margin-left: 8px;
         margin-top: 19px;
+        direction: rtl;
     }
 
-    .result_name {
-        font-family: Open Sans;
+     .cluster_result {
         position: relative;
-        left: -19px;
+        color: white;
+        margin-top: 3px;
+        width: 339px;
+        height: 203px;
+        background-color: #212121;
+        border-radius: 7px;
+        margin-left: 8px;
+        margin-top: 19px;
+    }
+
+
+    .result_type {
+        font-family: Open Sans;
+        font-size: 11px;
+        position: absolute;
+        left: 270px;
+        top: 48px;
+        background-color: #191919;
+        width: fit-content;
+        padding: 5px;
+        border-radius: 5px;
+        color: #434343;
+    }
+
+
+
+   .result_name {
+        font-family: Open Sans;
+        position: absolute;
+        left: 84px;
+        /*! width: כןא; */
+        direction: rtl;
+        /*! אםפ: 30; */
+        top: 23px;
+        width: 231px;
     }
 
     .result_producer {
@@ -422,6 +467,17 @@
         color: grey;
         font-size: 13px;
         top: -4px;
+    } 
+
+    .result_item_barcode {
+        position: relative;
+        width: fit-content;
+        font-size: 10px;
+        padding: 3px;
+        background-color: #272727;
+        border-radius: 3px;
+        left: -23px;
+        top: 6px;
     }
 
 
@@ -445,15 +501,20 @@
 
     #popup_product_name {
         font-family: Open Sans;
-        position: absolute;
-        left: -31px;
+        position: relative;
+        left: 0px;
         color: #7f7f7f;
         width: fit-content;
         font-size: 30px;
-        font-family: "Open Sans";
+        font-family: Open Sans;
         direction: rtl;
-        top: 130px;
-        width: 397px;
+        /*! top: -18px; */
+        direction: rtl;
+        width: fit-content;
+        margin: 0px;
+        height: fit-content;
+        top: 0px;
+        justify-content: right;
     }
 
 
@@ -471,38 +532,85 @@
     #popup_barcode {
         font-family: Open Sans;
         position: relative;
-        left: 290px;
+        /*! left: -18px; */
         color: #717171;
-        font-size: 9px;
-        top: 135px;
+        font-size: 10px;
+        /*! top: -87px; */
         width: fit-content;
         /* font-size: 30px; */
         font-family: Open Sans;
         /*! font-size: 3px; */
+        background-color: #0f0f0f;
+        padding: 4px;
+        border-radius: 1px;
+        height: fit-content;
+        margin: 0px;
+        top: 12px;
     } 
 
 
 
     #popup_product_description {
         font-family: Open Sans;
-        position: absolute;
+        position: relative;
         left: 154px;
         color: grey;
         font-size: 13px;
-        top: 209px;
+        top: 193px;
         width: fit-content;
         /* font-size: 30px; */
+        margin: 0px;
     } 
 
 
     #popup_venues_title {
+        position: relative;
+        color: #777;
+        top: 239px;
+        left: 273px;
+        width: fit-content;
+        font-family: Open Sans;
+    } 
+
+    #popup_lis_title {
         position: absolute;
         color: #777;
         top: 286px;
         left: 273px;
         width: fit-content;
         font-family: Open Sans;
+        direction: rtl;
+        top: 282px;
+        font-size: 20px;
+        left: 267px;
     } 
+
+
+
+
+    #popup_cluster_name {
+        font-family: Open Sans;
+        position: absolute;
+        left: -42px;
+        color: #7f7f7f;
+        width: fit-content;
+        font-size: 30px;
+        font-family: "Open Sans";
+        direction: rtl;
+        top: 124px;
+        width: 397px;
+    }
+
+    #cluster_product_container {
+        position: relative;
+        color: #b3b3b3;
+        top: 303px;
+        height: fit-content;
+        left: 19px;
+        width: 30px;
+    }
+
+    
 
     #add_venue_button {
         font-family: roboto;
@@ -510,7 +618,7 @@
         position: absolute;
         width: fit-content;
         font-size: 30px;
-        top: 307px;
+        top: 356px;
         left: 39px;
     }
 
@@ -550,10 +658,10 @@
     #popup_venues_container {
         position: relative;
         color: #b3b3b3;
-        top: 313px;
+        top: 215px;
         height: fit-content;
         left: 8px;
-        width: 30px;
+        width: fit-content;
     } 
 
 
@@ -561,7 +669,7 @@
         color: white;
         background-color: rgb(29, 29, 29);
         width: 377px;
-        height: 168px;
+        height: 178px;
         border-radius: 12px;
         /* width: 30; */
         position: relative;
@@ -583,7 +691,7 @@
         height: 0.5px;
         background-color: #282828;
         position: relative;
-        top: 178px;
+        top: 180px;
         /*! width: 30px; */
         left: 30px;
     } 
@@ -596,14 +704,30 @@
         top: 15px;
         font-family: arial;
         color: #59132a;
+    } 
+
+
+    .price_per_unit {
+        color: #525252;
+        width: fit-content;
+        font-size: 10px;
+        background-color: #252525;
+        padding: 5px;
+        border-radius: 1px;
+        top: -23px;
+        position: relative;
+        left: 78px;
+        font-family: Open Sans;
     }
+
+    
 
     .venue_divider {
         width: 329px;
         height: 0.5px;
         background-color: #656565;
         position: relative;
-        top: 58px;
+        top: 38px;
         /* width: 30px; */
         left: 18px;
     }
@@ -631,21 +755,24 @@
 
     #popup_product_pricerange {
         color: #7e7e7e;
-        position: absolute;
-        top: 246px;
-        left: 284px;
+        position: רק;
+        /*! top: 296px; */
+        /*! left: 284px; */
         font-family: Open Sans;
         background-color: #212121;
         border-radius: 38px;
         padding: 10px;
         font-size: 10px;
+        margin: 0px;
+        position: relative;
+        /*! margin-left: -7px; */
     }
 
     .result_pricerange {
         color: #7e7e7e;
         position: absolute;
-        top: 44px;
-        left: 248px;
+        top: 67px;
+        left: 247px;
         font-family: Open Sans;
         background-color: #393939;
         border-radius: 7px;
@@ -660,8 +787,11 @@
         font-family: Open Sans;
         font-size: 9px;
         position: absolute;
-        top: 44px;
-        left: 201px;
+        top: 63px;
+        left: 193px;
+        background-color: #352f2f;
+        padding: 3px;
+        border-radius: 3px;
     } 
 
 
@@ -691,6 +821,7 @@
         color: white;
         font-family: Roboto;
         margin: 0px;
+        font-family: Robto;
     }
 
     .venue_total {
@@ -715,7 +846,7 @@
         position: relative;
         left: 168px;
         width: fit-content;
-        top: 4px;
+        top: 30px;
         font-size: 51px;
     } 
 
@@ -731,7 +862,7 @@
         margin-left: 8px;
         margin-top: 19px;
         left: 7px;
-        top: -126px;
+        top: -113px;
     }
 
     .recipe_name {
@@ -752,7 +883,7 @@
         color: white;
         width: fit-content;
         font-size: 53px;
-        top: -110px;
+        top: -83px;
         position: relative;
         left: 19px;
     }
@@ -990,14 +1121,169 @@
         border-bottom-right-radius: 0px;
     }
 
+    #exit_recipes_ {
+        color: white;
+        width: fit-content;
+        font-size: 53px;
+        top: 15px;
+        position: absolute;
+        left: 337px;
+        transform: rotate(45deg);
+        font-size: 47px;
+        margin: 0px;
+        width: fit-content;
+    } 
+
+    #body_ {
+        height: 600px;
+    }
+
+    #recipes_div {
+        position: absolute;
+        height: 809px;
+        top: -11px;
+    }
+
+    .last_updated {
+        font-family: Open Sans;
+        font-size: 11px;
+        position: relative;
+        left: 24px;
+        top: -12px;
+        background-color: #191919;
+        width: fit-content;
+        padding: 5px;
+        border-radius: 17px;
+        color: #434343;
+    } 
+
+    .cluster_result_name {
+        font-family: Open Sans;
+        position: absolute;
+        left: 84px;
+        /* width: כןא; */
+        direction: rtl;
+        /* אםפ: 30; */
+        top: 0px;
+        width: 231px;
+    }
+
+   .cluster_product_am {
+        color: #385f89;
+        font-family: Open Sans;
+        font-size: 9px;
+        position: absolute;
+        top: 43px;
+        left: 219px;
+        background-color: #292a33;
+        padding: 3px;
+        border-radius: 2px;
+    } 
+
+
+    #popup_item_type {
+        color: #525050;
+        /*! width: ; */
+        width: fit-content;
+        font-family: OPen Sans;
+        background-color: #101010;
+        padding: 7px;
+        border-radius: 3px;
+        /*! top: -90px; */
+        left: 0px;
+        font-size: 10px;
+        /*! position: relative; */
+        height: fit-content;
+        margin: 0px;
+        position: relative;
+        top: 7px;
+    } 
+
+    #quantity {
+        color: #707070;
+        position: relative;
+        /*! top: 537px; */
+        /*! left: 296px; */
+        width: fit-content;
+        font-family: Open Sans;
+        padding: 6px;
+        background-color: #131313;
+        border-radius: 14px;
+        border: #1a1a1a;
+        border-style: solid;
+        border-width: 0.2px;
+        /*! left: -122px; */
+        font-size: 12px;
+        margin: 0px;
+    }
+
+
+    #product_clusters {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        top: ;
+        height: 69px;
+        direction: rtl;
+    } 
+
+    .product_cluster_t {
+        position: relative;
+        color: white;
+        margin: 0px;
+        font-family: Open Sans;
+        margin-left: 7px;
+        left: -18px;
+        padding: 5px;
+        background-color: #494949;
+        border-radius: 2.5px;
+        margin-top: 6px;
+        height: fit-content;
+    }
+
+    #product_clusters_ {
+        position: relative;
+        top: 343px;
+        height: 188px;
+    } 
+
+    #name_wrapper {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        direction: rtl;
+        width: 356px;
+        left: 1px;
+        height: fit-content;
+        top: 162px;
+        /*! justify-content: space-between; */
+        text-align: -moz-center-or-inherit;
+        justify-content: right;
+        column-gap: 11px;
+    } 
+
+
+    #wrapper__ {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+    }
     
+    #num_wrapper {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        top: 240px;
+        left: -1px;
+        /*! margin-left: -14px; */
+        column-gap: 3px;
+    }
 
 
-    
 
 
 
-    
+
 
 </style>
 
@@ -1005,8 +1291,10 @@
 <script>
 
 
+
 const se = document.getElementById("sea");
 const body = document.getElementById("body_");
+const body_ = document.getElementById("body");
 const add_venue_popup = document.getElementById("add_venue_popup");
 const side = document.getElementById("side");
 
@@ -1017,23 +1305,489 @@ body.onclick = function(e) {
 
     info_popup = document.getElementById("product_info_popup");
     recipe_popup = document.getElementById("recipe_popup"); 
-    console.log("bb", e.target.id)
+    
 
     if (e.target.id == "body_") {
         if (info_popup) {
             info_popup.style.visibility = "hidden";
             add_venue_popup.style.visibility = "hidden";
         }
-        side.style.visibility = "hidden";
+        document.getElementById("side").style.visibility = "hidden";
 
-        if (recipe_popup)
-        body.removeChild(recipe_popup);
+        
     }
 }
 
+
+
+async function load_product_info(product_info) {
+           
+                
+                console.log(venues);
+                venues = JSON.parse(product_info["venues"])["venues"];
+                console.log(venues);
+
+                venues_sorted = venues.sort((a, b) => a["price"] - b["price"]);
+                venues = venues_sorted;
+                
+
+                price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
+
+                quant = `${venues[0]["quantity"]} ${venues[0]["measure"]}`;
+                
+
+
+                info_popup = document.getElementById("product_info_popup");
+                info_popup.style.visibility = "visible";
+                info_popup.innerHTML = `
+                <!-- <div id="info_content"> -->
+
+
+
+                <div id="wrapper__">
+
+
+                <div id="name_wrapper">
+
+                    <p id="popup_product_name"></p>
+                    <p id="popup_item_type"></p>
+                    <p id="popup_barcode"></p>
+                </div>
+
+
+
+                <div id="divider"></div>
+
+                <p id="popup_product_description">טחינה מעולה שתגרום לכם ללקק את ה</p>
+
+
+                 <div id="num_wrapper">
+                <p id="popup_product_pricerange"></p>
+                <p id="quantity"></p>
+                </div>
+
+
+
+                <h2 id="popup_venues_title">בתי עסק</h2>
+                <div id="add_venue_button" onclick="add_venue()">+</div>
+                <p id="popup_venues_container"></p>
+
+                <div id="add_venue_popup"> 
+
+                    <input type="text" id="venue_name" class="add_venue_input" placeholder="שם בית עסק">
+                    <input type="text" id="venue_location" class="add_venue_input" placeholder="כתובת" onclick="getlocation()">
+                    <input type="number" id="price" class="add_venue_input" placeholder="מחיר מבוקש" inputmode="numeric">
+
+                    <div id="submit_button" onclick="add_venue_()">
+                        שלח
+                    </div>
+
+
+
+                </div>
+
+                </div>
+
+                <!-- </div> -->
+                
+            `
+
+
+                popup_product = document.getElementById("popup_product_name");
+                popup_producer = document.getElementById("popup_producer_name");
+                popup_barcode  = document.getElementById("popup_barcode");
+                popup_item_type = document.getElementById("popup_item_type");
+
+                popup_item_type.innerHTML = "מוצר";
+
+                last_updated = document.createElement("p");
+                last_updated.setAttribute("class", "last_updated");
+
+                // last_updated.inneHTML = product_info[""]
+
+                popup_product.innerHTML = product_info["product_name_"]
+                popup_barcode.innerHTML = product_info["product"]
+
+                popup_venue_container = document.getElementById("popup_venues_container"); 
+                popup_venue_container.innerHTML = "";
+
+
+
+                price_range = document.getElementById("popup_product_pricerange");
+                price_range.innerHTML = price_range_;
+
+                // qunat = document.createElement("div");
+                // quant.id = "quant";
+                // quant.innerHTML = quant;
+
+                quantity = document.getElementById("quantity");
+                quantity.innerHTML = quant;
+
+            
+                // Iterate through venues, show venues by which product is sold 
+                for (i=0; i<venues.length; i++) {
+                    console.log("VENUEE")
+                    venue = document.createElement("div");
+                    venue.setAttribute("class", "popup_venue");
+
+                    venue_name = document.createElement("p")
+                    venue_name.setAttribute("class", "popup_venue_name");
+
+                    venue_name.innerHTML = venues[i]["venue_name"];
+
+                    last_updated = document.createElement("p");
+                    last_updated.setAttribute("class", "last_updated");
+
+                    last_updated.innerHTML = venues[i]["last_updated"]
+
+
+
+                    price = document.createElement("p")
+                    price.setAttribute("class", "price");
+
+                    distance = 5;
+
+
+                    price.innerHTML = venues[i]['price']
+
+                    divider = document.createElement("div");
+                    divider.setAttribute("class", "venue_divider");
+
+
+
+                    price_per_unit = `ל${venues[i]["measure"]} ${venues[i]["price"]/venues[i]["quantity"]}`;
+                    price_per = document.createElement("p")
+                    price_per.setAttribute("class", "price_per_unit");
+
+                    price_per.innerHTML = price_per_unit;
+
+
+
+                    venue.appendChild(venue_name);
+                    venue.appendChild(price);
+                    venue.appendChild(price_per);
+                    venue.appendChild(divider);
+                    venue.appendChild(last_updated);
+
+                    popup_venue_container.appendChild(venue);
+                }
+
+                product_clusters = document.createElement("div");
+                product_clusters.id = "product_clusters";
+                product_clusters_ = document.createElement("div");
+                product_clusters_.id = "product_clusters_";
+
+                for (let i=0; i<JSON.parse(info["product_cluster"]).length; i++) {
+                    console.log("something");
+                    
+                    product_cluster = document.createElement("p");
+                    product_cluster.innerHTML = JSON.parse(info['product_cluster'])[i]; 
+                    product_cluster.setAttribute("class", "product_cluster_t");
+
+
+
+                    product_cluster.onclick = async function(e) {
+                        load_cluster_info(e.target.innerHTML);
+                    }
+                    
+                    product_clusters.appendChild(product_cluster); 
+                }
+
+
+                product_clusters_.appendChild(product_clusters)
+                info_popup.appendChild(product_clusters_);
+                console.log("Added")
+            }
+            
+  
+
+async function load_cluster_info(cluster_name) {
+
+            response = await fetch('/load_cluster_pro', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({"cluster_name": cluster_name})
+                    });
+
+            cluster_products = await response.json();
+
+            products = cluster_products[0];
+
+
+            info_popup = document.getElementById("product_info_popup");
+            info_popup.style.visibility = "visible";
+            console.log("visible");
+            
+
+            info_popup.innerHTML = "" 
+
+            popup_cluster_name = document.createElement("div");
+            popup_cluster_name.id = "popup_cluster_name";
+            popup_cluster_name.innerHTML = cluster_name;
+
+
+            popup_item_type = document.createElement("div");
+            popup_item_type.id = "popup_item_type";
+            popup_item_type.innerHTML = "קטגוריה";
+
+            popup_product_container = document.createElement("div");
+            popup_product_container.id = "cluster_product_container";
+
+
+            popup_products_title = document.createElement("div");
+            popup_products_title.id = "popup_lis_title";
+            popup_products_title.innerHTML = `${products.length} מוצרים`
+
+
+            info_popup.appendChild(popup_cluster_name);
+            info_popup.appendChild(popup_item_type);
+            info_popup.appendChild(popup_product_container);
+            info_popup.appendChild(popup_products_title);
+
+                
+
+
+            // Iterate through clutster's products
+            console.log(products, "sho")
+            for (let i=0; i<3; i++) {
+
+                venues = JSON.parse(products[i]["venues"])["venues"];
+
+                product = document.createElement("div");
+                product.setAttribute("class", "result");
+
+                product_name = document.createElement("p");
+                product_name.setAttribute("class", "result_name")
+                product_name.innerHTML = products[i]["product_name_"];
+                console.log(products);
+
+                venue_am_ = document.createElement("p");
+                venue_am_.setAttribute("class", "venue_am");
+                venue_am_.innerHTML = venue_am;
+
+                add_to_list = document.createElement("div");
+                add_to_list.setAttribute("class", "add_to_list"); 
+                add_to_list.id = i;
+                add_to_list.innerHTML = "+";
+
+                product.id = i;
+
+                product.onclick = function(e) {
+                    load_product_info(products[e.target.id]);
+                }
+
+
+                price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
+
+
+
+                result_item_producer = document.createElement("p");
+                result_item_producer.setAttribute("class", "result_producer");
+                result_item_pricerange = document.createElement("div");
+                result_item_pricerange.setAttribute("class", "result_pricerange");
+
+                result_item_pricerange.innerHTML = price_range_;
+                
+
+
+                product.appendChild(product_name);
+
+                product.appendChild(result_item_producer);
+                product.appendChild(add_to_list);
+                product.appendChild(result_item_pricerange);
+                product.appendChild(venue_am_);
+                
+                popup_product_container.appendChild(product);
+
+
+            }
+
+}
+
+
+async function s() {
+    console.log(se.value);
+
+
+    
+    response = await fetch('/search', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ val: se.value })
+                    });
+
+    results = await response.json();
+
+
+    product_clusters = results[1];
+    results = results[0];
+    console.log(results)
+    
+
+    sorted_by_venue_count = results.sort((a,b) => JSON.parse(a["venues"])["venues"].length - JSON.parse(b["venues"])["venues"].length).reverse();
+    results = sorted_by_venue_count;
+
+    console.log(results);
+
+    result_cont = document.getElementById("result_container");
+    result_cont.innerHTML = "";
+
+    cluster_names = Object.keys(product_clusters);
+
+    if (cluster_names) {
+        // Iterate through cluster results
+        for (let i=0; i<cluster_names.length; i++) {
+            console.log(product_clusters);
+            cluster_item = document.createElement("a");
+            cluster_item.setAttribute("class", "cluster_result");
+
+            type = document.createElement("div");
+            type.setAttribute("class", "result_type")
+            type.innerHTML = "קטגוריה";
+
+            cluster_item.id = cluster_names[i];
+
+            cluster_item_name = document.createElement("p");
+            cluster_item_name.setAttribute("class", "cluster_result_name");
+            cluster_item_name.innerHTML = cluster_names[i];
+
+
+            product_amount = document.createElement("p");
+            product_amount.setAttribute("class", "cluster_product_am");
+            product_amount.innerHTML = `${product_clusters[cluster_names[i]]} מוצרים`;
+
+            cluster_item.appendChild(cluster_item_name);
+            cluster_item.appendChild(product_amount);
+            cluster_item.appendChild(type);
+
+            result_cont.appendChild(cluster_item);
+
+
+            // Open info popup
+            cluster_item.onclick = async function(e) {
+                load_cluster_info(e.target.id)
+            }
+
+    }}
+
+
+    // Iterate through results, show product items
+    for (i=0; i<3; i++) {
+        venues = JSON.parse(results[i]["venues"])["venues"];
+
+        venues_sorted = venues.sort((a, b) => a["price"] - b["price"]);
+        venues = venues_sorted;
+        
+        price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
+        venue_am = `${venues.length} בתי עסק`;
+
+        result_item = document.createElement("a");
+        result_item.setAttribute("class", "result");
+
+        result_item.id = i;
+
+        result_item_name = document.createElement("p");
+        result_item_name.setAttribute("class", "result_name");
+
+        result_item_barcode = document.createElement("p");
+        result_item_barcode.innerHTML = results[i]["product"]
+        result_item_barcode.setAttribute("class", "result_item_barcode");
+
+        result_item.appendChild(result_item_name);
+
+        result_item_producer =  document.createElement("p");
+        result_item_producer.setAttribute("class", "result_producer");
+
+
+        result_item_pricerange = document.createElement("div");
+        result_item_pricerange.setAttribute("class", "result_pricerange");
+
+        result_item_pricerange.innerHTML = price_range_;
+        
+        venue_am_ = document.createElement("p");
+        venue_am_.setAttribute("class", "venue_am");
+        venue_am_.innerHTML = venue_am;
+
+        add_to_list = document.createElement("div");
+        add_to_list.setAttribute("class", "add_to_list"); 
+        add_to_list.id = i;
+        add_to_list.innerHTML = "+";
+
+        // result_item.appendChild(result_item_producer);
+        result_item.appendChild(add_to_list);
+        result_item.appendChild(result_item_pricerange);
+        result_item.appendChild(venue_am_);
+        result_item.appendChild(result_item_barcode);
+        
+
+
+        add_to_list.onclick = async function(e) {
+            added_product = results[e.target.id]["product"];
+
+            response = await fetch('/add_to_user_list', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({"added_product_": added_product})
+                    });
+
+        results = await response.json();
+            
+
+        }
+
+
+        result_item_name.innerHTML = results[i]["product_name_"];
+        result_item_producer.innerHTML = results[i]["יצרן"];
+        
+        
+        // Open product info popup
+        result_item.onclick = function(e) {
+            info = results[e.target.id];
+
+            if ((e.target.className != "add_to_list")) {
+                if ((e.target.className == "result")) {
+                    load_product_info(info);
+                }
+            }
+
+        }
+
+
+        result_cont.appendChild(result_item);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+document.getElementById("recipes_div").onclick = function(e) {
+    console.log(e.target.id, "adasdasAAAA")
+    
+    if (e.target.id == "recipes_div") {
+    document.getElementById("recipes_div").removeChild(document.getElementById("recipe_popup"));
+    }
+        
+}
+
+
 async function recipes() {
     document.getElementById('side').style.visibility='hidden'
-    body.innerHTML = ''
+
+    recipes_div = document.getElementById("recipes_div");
+    recipes_div.style.visibility = "visible";
+    body.style.visibility = "hidden";
 
     recipes_ = document.createElement("h2");
     recipes_.id = "recipes_title";
@@ -1045,8 +1799,22 @@ async function recipes() {
     
     add.innerHTML = "+"; 
 
-    body.appendChild(recipes_);
-    body.appendChild(add);
+    exit = document.createElement("h2");
+    exit.id = "exit_recipes_"; 
+
+    exit.innerHTML = "+";
+
+    exit.onclick = function() {
+        recipes_div.style.visibility = "hidden";
+        recipes_div.innerHTML = "";
+        body.style.visibility = "visible";
+    }
+    
+
+    recipes_div.appendChild(recipes_);
+    recipes_div.appendChild(add);
+    recipes_div.appendChild(exit);
+    body_.appendChild(recipes_div)
 
 
     function recipe_popup_(recipe_object) {
@@ -1057,7 +1825,7 @@ async function recipes() {
         recipe_content.id = "recipe_content"; 
 
         recipe_popup_image = document.createElement("div");
-        recipe_popup_image.innerHTML = `<img src="http://localhost:8080/burg.png" id="popup_image">`
+        recipe_popup_image.innerHTML = `<img src="${recipe_object["image"]}" id="popup_image">`
 
         recipe_name = document.createElement("h2");
         recipe_name.id = "recipe_title"; 
@@ -1106,7 +1874,7 @@ async function recipes() {
         recipe_content.appendChild(recipe_ingrediants);
 
         recipe_popup.appendChild(recipe_content);
-        body.appendChild(recipe_popup)
+        recipes_div.appendChild(recipe_popup)
 
 
 
@@ -1132,7 +1900,7 @@ async function recipes() {
 
     recipes_container = document.createElement("div");
     recipes_container.id = "recipes_cotainer";
-    body.appendChild(recipes_container);
+    recipes_div.appendChild(recipes_container);
 
 
     for (let i=0; i<recipes__.length; i++) {
@@ -1141,7 +1909,7 @@ async function recipes() {
             recipe_.setAttribute("class", "recipe_item"); 
 
             recipe_image = document.createElement("div");
-            recipe_image.innerHTML = `<img src="http://localhost:8080/burg.png" id="popup_image">`;
+            recipe_image.innerHTML = `<img src="${recipes__[i]["image"]}" id="popup_image">`;
             recipe_image.setAttribute("class", "img_thumb_container")
 
             recipe_name = document.createElement("p");
@@ -1155,7 +1923,7 @@ async function recipes() {
 
             recipe_.onclick = function(e) {
 
-                
+                console.log(recipes__[e.target.id]);
                 recipe_popup_(recipes__[e.target.id])
 
             }
@@ -1166,17 +1934,10 @@ async function recipes() {
             recipe_total.innerHTML = recipes__[i]["price"] + "₪";
             recipe_.id = i;
 
-
-
-
             recipes_container.appendChild(recipe_);
         }
         
     }
-
-
-    
-
 
 
 
@@ -1257,6 +2018,7 @@ async function recipes() {
 
                 results = await response.json();
                 products = results;
+
                 
                 product_complete.innerHTML = "";
                 console.log(products)
@@ -1326,7 +2088,7 @@ async function recipes() {
 
             console.log(results);
 
-            // add_recipe_popup.style.visibility = "hidden";
+            add_recipe_popup.style.visibility = "hidden";
 
         }
 
@@ -1334,7 +2096,7 @@ async function recipes() {
             add_recipe_popup.style.visibility = "hidden";
         }
 
-        body.appendChild(add_recipe_popup);
+        recipes_div.appendChild(add_recipe_popup);
         
 
 
@@ -1429,167 +2191,6 @@ async function getlocation() {
 
 
 
-async function s() {
-    
-    response = await fetch('/search', {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ val: se.value })
-                    });
-
-    results = await response.json();
-
-    console.log(results);
-
-    
-    result_cont = document.getElementById("result_container");
-    result_cont.innerHTML = "";
-
-
-    for (i=0; i<3; i++) {
-        venues = JSON.parse(results[i]["venues"])["venues"];
-
-        price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
-        venue_am = `${venues.length} בתי עסק`;
-
-        result_item = document.createElement("a");
-        result_item.setAttribute("class", "result");
-
-        result_item.id = i;
-
-        result_item_name = document.createElement("p");
-        result_item_name.setAttribute("class", "result_name");
-
-        result_item.appendChild(result_item_name);
-
-        result_item_producer =  document.createElement("p");
-        result_item_producer.setAttribute("class", "result_producer");
-
-
-        result_item_pricerange = document.createElement("div");
-        result_item_pricerange.setAttribute("class", "result_pricerange");
-
-        result_item_pricerange.innerHTML = price_range_;
-        
-        venue_am_ = document.createElement("p");
-        venue_am_.setAttribute("class", "venue_am");
-        venue_am_.innerHTML = venue_am;
-
-
-
-
-        add_to_list = document.createElement("div");
-        add_to_list.setAttribute("class", "add_to_list"); 
-        add_to_list.id = i;
-        add_to_list.innerHTML = "+";
-
-        result_item.appendChild(result_item_producer);
-        result_item.appendChild(add_to_list);
-        result_item.appendChild(result_item_pricerange);
-        result_item.appendChild(venue_am_);
-
-
-        add_to_list.onclick = async function(e) {
-            added_product = results[e.target.id]["product"];
-
-            response = await fetch('/add_to_user_list', {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({"added_product_": added_product})
-                    });
-
-        results = await response.json();
-
-
-        }
-
-
-        result_item_name.innerHTML = results[i]["product_name_"];
-        result_item_producer.innerHTML = results[i]["יצרן"];
-        
-
-        result_item.onclick = function(e) {
-            console.log(e.target)
-            if (e.target.className != "add_to_list") {
-                
-            console.log("OPEN")
-            
-            info = results[e.target.id];
-
-            venues = JSON.parse(info["venues"])["venues"];
-            console.log(venues);
-
-
-            price_range_ = `${venues[0]["price"]} - ${venues[venues.length-1]["price"]}`;
-            
-
-
-            info_popup = document.getElementById("product_info_popup");
-            info_popup.style.visibility = "visible";
-
-
-            popup_product = document.getElementById("popup_product_name");
-            popup_producer = document.getElementById("popup_producer_name");
-            popup_barcode  = document.getElementById("popup_barcode");
-
-            popup_product.innerHTML = info["product_name_"]
-            popup_producer.innerHTML = info["מותג"]
-            popup_barcode.innerHTML = info["product"]
-
-            popup_venue_container = document.getElementById("popup_venues_container"); 
-            popup_venue_container.innerHTML = "";
-
-
-            price_range = document.getElementById("popup_product_pricerange");
-            price_range.innerHTML = price_range_;
-
-            for (i=0; i<venues.length; i++) {
-                console.log("VENUEE")
-                venue = document.createElement("div");
-                venue.setAttribute("class", "popup_venue");
-
-                venue_name = document.createElement("p")
-                venue_name.setAttribute("class", "popup_venue_name");
-
-                venue_name.innerHTML = venues[i]["venue_name"];
-
-
-                price = document.createElement("p")
-                price.setAttribute("class", "price");
-
-                distance = 5;
-
-
-                price.innerHTML = venues[i]['price']
-
-                divider = document.createElement("div");
-                divider.setAttribute("class", "venue_divider");
-
-                
-
-
-                venue.appendChild(venue_name);
-                venue.appendChild(price);
-                venue.appendChild(divider);
-
-                popup_venue_container.appendChild(venue);
-            }
-            }
-            
-
-
-        }
-
-
-        result_cont.appendChild(result_item);
-    }
-
-}
-
 
 async function add_venue() {
     popup = document.getElementById("add_venue_popup");
@@ -1679,6 +2280,8 @@ async function get_userlist() {
 
         open_ = false;
 
+
+        // Inlarge popup
         userlist_circle.onclick = async function(e) {
             console.log(open_)
 
@@ -1708,7 +2311,6 @@ async function get_userlist() {
                 open_ = true;
 
 
-                // Inlarge popup
 
                 shopping_title = document.getElementById("shopping_title");
                 shopping_title.style.visibility = "visible";
@@ -1722,22 +2324,13 @@ async function get_userlist() {
                 userlist_circle.style.top = "-1px";
 
                 
-                venue_rank = {}
+                venue_rank = results[2];
 
                 
                 // show items
                 for (i=0; i<user_list.length; i++) {
                     venues = JSON.parse(user_list[i]["venues"])["venues"];
 
-                    for (x=0; x<venues.length; x++) {
-                        if (Object.keys(venue_rank).includes(venues[x]["venue_name"])) {
-                            venue_rank[venues[x]['venue_name']] += parseFloat(venues[x]["price"]);
-                        } else{
-                            venue_rank[venues[x]['venue_name']] = parseFloat(venues[x]["price"]);
-                        }
-                    }
-
-                
                     shopping_item = document.createElement("div");
                     shopping_item.setAttribute("class", "shopping_item");
                     shopping_item.id = `shopping_item ${i}`
@@ -1763,7 +2356,7 @@ async function get_userlist() {
                         user_list.splice(e.target.id, 1);
                         console.log(user_list);
 
-                        response = await fetch('/send_userlist', {
+                        response = await fetch('/update_userlist', {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
@@ -1772,6 +2365,40 @@ async function get_userlist() {
                         });
 
                     results = await response.json();
+
+
+                    console.log(results);
+
+                    venues_container.innerHTML = "";
+
+                    venue_rank = results[2];
+
+
+                    for (let n=0; n<Object.keys(venue_rank).length; n++) {
+                        venue_namee = Object.keys(venue_rank)[n]
+
+                        console.log(venue_rank[venue_namee]);
+
+                        
+                        venue_element = document.createElement("div");
+                        venue_element.setAttribute("class", "shopping_venue");
+
+                        venue_name =  document.createElement("p");
+                        venue_name.setAttribute("class", "shopping_venue_name");
+
+                        venue_total =  document.createElement("p");
+                        venue_total.setAttribute("class", "venue_total");
+
+                        venue_name.innerHTML = venue_namee;
+                        venue_total.innerHTML = venue_rank[venue_namee]['total'];
+
+                        venue_element.appendChild(venue_name);
+                        venue_element.appendChild(venue_total);
+
+                        venues_container.appendChild(venue_element);
+                        
+                    }
+
                     }
 
 
@@ -1801,10 +2428,11 @@ async function get_userlist() {
 
 
                 // Show venues
-                for (n=0; n<Object.keys(venue_rank).length; n++) {
-                        console.log("SOMSA");
+                for (let n=0; n<Object.keys(venue_rank).length; n++) {
+                        venue_namee = Object.keys(venue_rank)[n]
 
-                        venue_object = {"venue_name": Object.keys(venue_rank)[n], "price": venue_rank[Object.keys(venue_rank)[n]]}
+                        console.log(venue_rank[venue_namee]);
+
                         
                         venue_element = document.createElement("div");
                         venue_element.setAttribute("class", "shopping_venue");
@@ -1815,8 +2443,8 @@ async function get_userlist() {
                         venue_total =  document.createElement("p");
                         venue_total.setAttribute("class", "venue_total");
 
-                        venue_name.innerHTML = venue_object["venue_name"];
-                        venue_total.innerHTML = venue_object["price"];
+                        venue_name.innerHTML = venue_namee;
+                        venue_total.innerHTML = venue_rank[venue_namee]['total'];
 
                         venue_element.appendChild(venue_name);
                         venue_element.appendChild(venue_total);
